@@ -1,0 +1,1 @@
+export const Vans = ()=><h1>Vans component!</h1>
