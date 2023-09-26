@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react";
+import {FunctionComponent, useEffect, useState} from "react";
 import {Van} from "../../types/van.ts";
 import {Link} from "react-router-dom";
 
 
-export const Vans = () => {
+export const Vans:FunctionComponent = () => {
     const [vans, setVans] = useState<Van[]>([])
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export const Vans = () => {
     const vansElements = vans.map((van) => (
         <div key={van.id} className="van-title">
             <Link to={`/vans/${van.id}`}>
-                <img src={van.imageUrl}/>
+                <img alt={'van-image'} src={van.imageUrl}/>
                 <div className="van-info">
                     <h3>{van.name}</h3>
                     <p>${van.price}<span>/day</span></p>
