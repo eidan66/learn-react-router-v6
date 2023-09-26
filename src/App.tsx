@@ -4,12 +4,15 @@ import {About} from "./components/About/About.tsx";
 import {Vans} from "./components/Vans/Vans.tsx";
 import {Home} from "./components/Home/Home.tsx";
 
+import "./server"
+
 const App = () => (
     <BrowserRouter>
         <header>
             <Link className="site-logo" to="/">#VanLife</Link>
             <nav>
                 <Link to="/about">About</Link>
+                <Link to="/vans">Vans</Link>
             </nav>
         </header>
         <Routes>
