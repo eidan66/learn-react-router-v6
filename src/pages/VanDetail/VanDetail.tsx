@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react";
+import {FunctionComponent, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Van} from "../../types/van.ts";
 
 
-export const VanDetail = () => {
+export const VanDetail:FunctionComponent = () => {
     const params = useParams()
     const [van, setVan] = useState<Van | null>(null)
 
@@ -18,7 +18,7 @@ export const VanDetail = () => {
         <div className="van-detail-container">
             {van ? (
                 <div className={"van-detail"}>
-                    <img src={van.imageUrl}/>
+                    <img alt={'van-image'} src={van.imageUrl}/>
                     <i className={`van-type ${van.type} selected`}>{van.type}</i>
                     <h2>{van.name}</h2>
                     <p className={"van-price"}><span>${van.price}</span>\day</p>
