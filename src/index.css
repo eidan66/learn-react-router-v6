@@ -44,6 +44,13 @@ header .site-logo {
     font-size: 25px;
 }
 
+a.active-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
+}
+
+
 header a {
     text-decoration: none;
     color: #4D4D4D;
@@ -460,6 +467,7 @@ i[class*='van-type-'] {
     font-size: 14px;
     line-height: 21px;
 }
+
 .host-van-detail-info > h4 > span {
     font-weight: 500;
 }
@@ -666,6 +674,7 @@ img.graph {
     padding: 35px 29px;
     border-radius: 6px;
 }
+
 .host-income .transaction > h3 {
     font-size: 36px;
     font-weight: 600;
