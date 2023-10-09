@@ -1,21 +1,21 @@
 import {FunctionComponent} from 'react';
-import {NavLink, Outlet} from 'react-router-dom';
+import {NavLink, NavLinkProps, Outlet} from 'react-router-dom';
 
 export const HostLayout: FunctionComponent = () => {
-    const activeStyles = {
-      fontWeight: 'bold',
-      textDecoration:'underline',
-      color:'#161616',
-    }
+    const getActiveStyles: NavLinkProps['style'] = ({isActive}) => isActive ? ({
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        color: '#161616'
+    }) : {}
 
     return (
         <>
             <nav className="host-nav">
-                <NavLink end style={({isActive}) => isActive ? activeStyles : {}}
+                <NavLink end style={getActiveStyles}
                          to="/host">Dashboard</NavLink>
-                <NavLink style={({isActive}) => isActive ? activeStyles : {}}
+                <NavLink style={getActiveStyles}
                          to="/host/income">Income</NavLink>
-                <NavLink style={({isActive}) => isActive ? activeStyles : {}}
+                <NavLink style={getActiveStyles}
                          to="/host/reviews">Reviews</NavLink>
             </nav>
             <Outlet/>
