@@ -5,17 +5,28 @@ import {Vans} from "./pages/Vans/Vans.tsx";
 import {Home} from "./pages/Home/Home.tsx";
 
 import "./server"
-import {VanDetail} from "./pages/VanDetail/VanDetail.tsx";
+import {VanDetail} from "./pages/Vans/VanDetail.tsx";
 import {Layout} from "./components/Layout/Layout.tsx";
+import {Income} from "./pages/host/Income.tsx";
+import {Reviews} from "./pages/host/Reviews.tsx";
+import {HostLayout} from "./components/HostLayout/HostLayout.tsx";
+import {Dashboard} from "./pages/host/Dashboard.tsx";
 
 const App = () => (
     <BrowserRouter>
         <Routes>
-            <Route element={<Layout/>}>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/vans" element={<Vans/>}/>
-                <Route path="/vans/:id" element={<VanDetail/>}/>
+            <Route path="/" element={<Layout/>}>
+                <Route index element={<Home/>}/>
+                <Route path="about" element={<About/>}/>
+
+                <Route path="vans" element={<Vans/>}/>
+                <Route path="vans/:id" element={<VanDetail/>}/>
+
+                <Route path="host" element={<HostLayout/>}>
+                    <Route index element={<Dashboard/>}/>
+                    <Route path="income" element={<Income/>}/>
+                    <Route path="reviews" element={<Reviews/>}/>
+                </Route>
             </Route>
         </Routes>
     </BrowserRouter>
