@@ -7,7 +7,7 @@ export const Vans:FunctionComponent = () => {
     const [vans, setVans] = useState<Van[]>([])
 
     useEffect(() => {
-        fetch("http://localhost:5173/api/vans").then(response => response.json()).then(({vans}) =>
+        fetch("/api/vans").then(response => response.json()).then(({vans}) =>
             setVans(vans)
         )
     }, [])
