@@ -1,7 +1,7 @@
 import {FunctionComponent, useEffect, useState} from 'react'
 import {Link, useParams, Outlet, NavLink} from 'react-router-dom'
 import {Van} from '../../types/van.ts'
-import {getActiveStyles} from '../utils/getActiveStyle.tsx'
+import {getActiveStyles} from '../../utils/getActiveStyle.ts'
 
 export const HostVanDetail: FunctionComponent = () => {
     const {id} = useParams()
