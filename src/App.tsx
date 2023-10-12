@@ -6,6 +6,7 @@ import {HostVanInfo} from './pages/Host/HostVanInfo.tsx'
 import {HostVanPhotos} from './pages/Host/HostVanPhotos.tsx'
 import {HostVanPricing} from './pages/Host/HostVanPricing.tsx'
 import {HostVans} from './pages/Host/HostVans.tsx'
+import {NotFound} from './pages/NotFound.tsx'
 import {Vans} from './pages/Vans/Vans.tsx';
 import {Home} from './pages/Home/Home.tsx';
 
@@ -38,6 +39,7 @@ const App = () => (
                         <Route path="photos" element={<HostVanPhotos/>}/>
                     </Route>
                 </Route>
+                <Route path="*" element={<NotFound/>}/>
             </Route>
         </Routes>
     </BrowserRouter>
