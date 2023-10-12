@@ -1,5 +1,5 @@
 export interface Van {
-    id: number;
+    id: string;
     description: string;
     imageUrl: string;
     name: string;
