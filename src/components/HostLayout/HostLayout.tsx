@@ -14,9 +14,11 @@ export const HostLayout: FunctionComponent = () => {
                 <NavLink end style={getActiveStyles}
                          to="/host">Dashboard</NavLink>
                 <NavLink style={getActiveStyles}
-                         to="/host/income">Income</NavLink>
+                         to="income">Income</NavLink>
                 <NavLink style={getActiveStyles}
-                         to="/host/reviews">Reviews</NavLink>
+                         to="vans">Vans</NavLink>
+                <NavLink style={getActiveStyles}
+                         to="reviews">Reviews</NavLink>
             </nav>
             <Outlet/>
         </>
