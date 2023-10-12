@@ -2,7 +2,7 @@
 
 ## Explanation
 
-In this project, I'll create a web application from [this Youtube course]('https://www.youtube.com/watch?v=nDGA3km5He4') step by step.
+In this project, I'll create a web application from [this Youtube course](https://www.youtube.com/watch?v=nDGA3km5He4) step by step.
 
 ## Languages
 * React
