@@ -7,6 +7,7 @@ import {HostVanInfo} from './pages/Host/HostVanInfo.tsx'
 import {HostVanPhotos} from './pages/Host/HostVanPhotos.tsx'
 import {HostVanPricing} from './pages/Host/HostVanPricing.tsx'
 import {HostVans} from './pages/Host/HostVans.tsx'
+import {Login} from './pages/Login/Login.tsx'
 import {NotFound} from './pages/NotFound.tsx'
 import {loader as vansLoader, Vans} from './pages/Vans/Vans.tsx';
 import {Home} from './pages/Home/Home.tsx';
@@ -24,6 +25,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
         <Route path="about" element={<About/>}/>
+        <Route path="login" element={<Login/>}/>
 
         <Route path="vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
         <Route path="vans/:id" element={<VanDetail/>}/>
