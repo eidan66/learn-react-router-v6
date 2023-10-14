@@ -1,20 +1,17 @@
-import {FunctionComponent, useEffect, useState} from 'react';
+import {FunctionComponent} from 'react';
+import {getVans} from '../../api.ts'
 import {Van} from '../../types/van.ts';
-import {Link, useSearchParams} from 'react-router-dom';
+import {Link, useSearchParams, useLoaderData} from 'react-router-dom';
 
+export const loader = () => getVans()
 
 export const Vans: FunctionComponent = () => {
-    const [vans, setVans] = useState<Van[]>([])
     const [searchParams, setSearchParams] = useSearchParams()
+
+    const vans = useLoaderData() as Van[]
 
     const typeFilter = searchParams.get('type')
     const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter.toLowerCase()) : vans
-
-    useEffect(() => {
-        fetch('/api/vans').then(response => response.json()).then(({vans}) =>
-            setVans(vans)
-        )
-    }, [])
 
 
     const handleFilterChange = (key: string, value: string | null) => {
