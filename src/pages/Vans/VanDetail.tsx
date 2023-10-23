@@ -1,19 +1,17 @@
 import {FunctionComponent} from 'react';
 import {Link, LoaderFunctionArgs, useLoaderData, useLocation} from 'react-router-dom';
 
-import {getVans} from '../../api.ts'
+import {getVan} from '../../api.ts'
 import {Van} from '../../types/van.ts';
 
 export const loader = ({params}: LoaderFunctionArgs
-) => getVans(params.id)
+) => getVan(params.id as string)
 
 export const VanDetail: FunctionComponent = () => {
     const location = useLocation()
     const search = location?.state?.search || ''
     const type = location?.state?.type || 'all'
     const van = useLoaderData() as Van;
-
-
 
     return (
         <div className="van-detail-container">
