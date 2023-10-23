@@ -1,6 +1,6 @@
 import {FunctionComponent} from 'react'
 import {Link, Outlet, NavLink, LoaderFunctionArgs, useLoaderData} from 'react-router-dom'
-import {getHostVans} from '../../api.ts'
+import {getVan} from '../../api.ts'
 import {Van} from '../../types/van.ts'
 import {getActiveStyles} from '../../utils/getActiveStyle.ts'
 import {requireAuth} from '../../utils/requireAuth.ts'
@@ -8,7 +8,7 @@ import {requireAuth} from '../../utils/requireAuth.ts'
 
 export const loader = async  ({request, params}: LoaderFunctionArgs) => {
     await requireAuth({request})
-    return getHostVans(params.id)
+    return getVan(params.id as string)
 }
 
 export const HostVanDetail: FunctionComponent = () => {
