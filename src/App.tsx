@@ -18,7 +18,7 @@ import {Layout} from './components/Layout/Layout.tsx';
 import {Income} from './pages/Host/Income.tsx';
 import {Reviews} from './pages/Host/Reviews.tsx';
 import {HostLayout} from './components/HostLayout/HostLayout.tsx';
-import {Dashboard} from './pages/Host/Dashboard.tsx';
+import {Dashboard, loader as dashboardLoader} from './pages/Host/Dashboard.tsx';
 import {requireAuth} from './utils/requireAuth.ts'
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -32,7 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 
         <Route path="host" element={<HostLayout/>}>
             <Route index element={<Dashboard/>}
-                   loader={async ({request}) => await requireAuth({request})}
+                   loader={dashboardLoader}
             />
             <Route path="income" element={<Income/>}
                    loader={async ({request}) => await requireAuth({request})}

@@ -13,6 +13,7 @@ export const action = async ({request}: { request: Request }) => {
     const redirectTo = new URL(request.url).searchParams.get('redirectTo') || '/host'
 
     try {
+        // @ts-ignore
         const data = await loginUser({email, password})
         localStorage.setItem('loggedin', 'true')
 
