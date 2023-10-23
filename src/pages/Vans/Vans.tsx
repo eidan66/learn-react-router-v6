@@ -1,11 +1,7 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, Suspense} from 'react';
 import {getVans} from '../../api.ts'
-import {Van} from '../../types/van.ts';
+import {LoaderData, Van} from '../../types/van.ts';
 import {Link, useSearchParams, useLoaderData, defer, Await} from 'react-router-dom';
-
-type LoaderData = {
-    vans: Van[]
-}
 
 export const loader = () => defer({
     vans: getVans()
@@ -73,9 +69,11 @@ export const Vans: FunctionComponent = () => {
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
-            <Await resolve={dataPromise.vans}>
-                {renderVansElements}
-            </Await>
+            <Suspense fallback={<h2>Loading vans...</h2>}>
+                <Await resolve={dataPromise.vans}>
+                    {renderVansElements}
+                </Await>
+            </Suspense>
         </div>
     )
 }

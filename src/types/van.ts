@@ -6,3 +6,7 @@ export interface Van {
     price: number;
     type: string
 }
+
+export type LoaderData = {
+    vans: Van[]
+}
