@@ -1,26 +1,24 @@
-import {FunctionComponent, useEffect, useState} from 'react';
-import {Link, useLocation, useParams} from 'react-router-dom';
+import {FunctionComponent} from 'react';
+import {Link, LoaderFunctionArgs, useLoaderData, useLocation} from 'react-router-dom';
+
+import {getVans} from '../../api.ts'
 import {Van} from '../../types/van.ts';
 
+export const loader = ({params}: LoaderFunctionArgs
+) => getVans(params.id)
 
 export const VanDetail: FunctionComponent = () => {
-    const params = useParams()
     const location = useLocation()
-    const [van, setVan] = useState<Van | null>(null)
     const search = location?.state?.search || ''
     const type = location?.state?.type || 'all'
+    const van = useLoaderData() as Van;
 
-    useEffect(() => {
-        fetch(`/api/vans/${params.id}`).then(response => response.json()).then(data => {
-            setVan(data.vans)
-        })
-    }, [params.id])
+
 
     return (
         <div className="van-detail-container">
             <Link to={`..${search}`} relative={'path'} className={'back-button'}>&larr;
                 <span>Back to {type} vans</span></Link>
-            {van ? (
                 <div className={'van-detail'}>
                     <img alt={van.name} src={van.imageUrl}/>
                     <i className={`van-type ${van.type} selected`}>{van.type}</i>
@@ -29,7 +27,6 @@ export const VanDetail: FunctionComponent = () => {
                     <p>{van.description}</p>
                     <button className={'link-button'}>Rent this van</button>
                 </div>
-            ) : <h2>Loading...</h2>}
         </div>
     );
 }

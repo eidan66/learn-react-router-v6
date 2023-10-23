@@ -1,25 +1,22 @@
-import {FunctionComponent, useEffect, useState} from 'react'
-import {Link, useParams, Outlet, NavLink} from 'react-router-dom'
+import {FunctionComponent} from 'react'
+import {Link, Outlet, NavLink, LoaderFunctionArgs, useLoaderData} from 'react-router-dom'
+import {getHostVans} from '../../api.ts'
 import {Van} from '../../types/van.ts'
 import {getActiveStyles} from '../../utils/getActiveStyle.ts'
+import {requireAuth} from '../../utils/requireAuth.ts'
+
+
+export const loader = async  ({request, params}: LoaderFunctionArgs) => {
+    await requireAuth({request})
+    return getHostVans(params.id)
+}
 
 export const HostVanDetail: FunctionComponent = () => {
-    const {id} = useParams()
-    const [currentVan, setCurrentVan] = useState<Van | null>(null)
-
-    useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentVan(data.vans))
-    }, [])
-
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
+    const currentVan = useLoaderData() as Van;
 
     return (
         <section>
-            <Link  to={'..'} relative={'path'} className={'back-button'}>&larr; <span>Back to all vans</span></Link>
+            <Link to={'..'} relative={'path'} className={'back-button'}>&larr; <span>Back to all vans</span></Link>
             <div className="host-van-detail-layout-container">
                 <div className="host-van-detail">
                     <img src={currentVan.imageUrl}/>
